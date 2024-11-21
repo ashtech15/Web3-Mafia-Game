@@ -38,17 +38,24 @@
 // // Tags are useful if you have multiple deploy files and only want to run one of them.
 // // e.g. yarn deploy --tags YourContract
 // deployYourContract.tags = ["YourContract"];
-
+import * as dotenv from "dotenv";
+dotenv.config();
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
 import { Contract } from "ethers";
+import { ethers } from "hardhat";
 
 const deployMafiaGame: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
-  const { deployer } = await hre.getNamedAccounts();
+  // const { deployer } = await hre.getNamedAccounts();
+
+  const deployerPrivateKey =
+    process.env.DEPLOYER_PRIVATE_KEY || "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80";
+  const deployerWallet = new ethers.Wallet(deployerPrivateKey, hre.ethers.provider);
+
   const { deploy } = hre.deployments;
 
   const treasuryDeployment = await deploy("Treasury", {
-    from: deployer,
+    from: deployerWallet.address,
     log: true,
     autoMine: true,
   });
@@ -56,14 +63,14 @@ const deployMafiaGame: DeployFunction = async function (hre: HardhatRuntimeEnvir
   console.log("Treasury deployed to:", treasuryDeployment.address);
 
   const mafiaGameDeployment = await deploy("MafiaGame", {
-    from: deployer,
+    from: deployerWallet.address,
     args: [treasuryDeployment.address],
     log: true,
     autoMine: true,
   });
 
   console.log("MafiaGame deployed to:", mafiaGameDeployment.address);
-  const mafiaGame = await hre.ethers.getContract<Contract>("MafiaGame", deployer);
+  const mafiaGame = await hre.ethers.getContract<Contract>("MafiaGame", deployerWallet.address);
   console.log("👋 MafiaGame is ready for interaction: ", await mafiaGame.getAddress());
 
   const treasury = await hre.ethers.getContractAt("Treasury", treasuryDeployment.address);

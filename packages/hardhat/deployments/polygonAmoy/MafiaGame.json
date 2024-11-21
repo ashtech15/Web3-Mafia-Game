@@ -1,0 +1,647 @@
+{
+  "address": "0xC10dE801304cD6dd8a38d1385fd9b684112086f4",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_treasuryAddress",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "victim",
+          "type": "address"
+        }
+      ],
+      "name": "DayNarration",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address[]",
+          "name": "winners",
+          "type": "address[]"
+        }
+      ],
+      "name": "GameEnded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [],
+      "name": "GameReset",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [],
+      "name": "GameStarted",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "killer",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "victim",
+          "type": "address"
+        }
+      ],
+      "name": "NightNarration",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "voter",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "target",
+          "type": "address"
+        }
+      ],
+      "name": "PlayerVoted",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "winner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "PrizeClaimed",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "player",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum MafiaGame.Role",
+          "name": "role",
+          "type": "uint8"
+        }
+      ],
+      "name": "RoleAssigned",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [],
+      "name": "VotingRestarted",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "mostVoted",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "highestVotes",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "isTie",
+          "type": "bool"
+        }
+      ],
+      "name": "VotingResult",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "activePlayer",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "target",
+          "type": "address"
+        }
+      ],
+      "name": "assassinKill",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "claimPrize",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "currentState",
+      "outputs": [
+        {
+          "internalType": "enum MafiaGame.GameState",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getAllPlayers",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "playerAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "enum MafiaGame.Role",
+              "name": "role",
+              "type": "uint8"
+            },
+            {
+              "internalType": "bool",
+              "name": "isAlive",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "hasVoted",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct MafiaGame.Player[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getAllWinners",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "joinGame",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "lastKilled",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "playerAddresses",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "players",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "playerAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "enum MafiaGame.Role",
+          "name": "role",
+          "type": "uint8"
+        },
+        {
+          "internalType": "bool",
+          "name": "isAlive",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "hasVoted",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "startTime",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalVotes",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "treasury",
+      "outputs": [
+        {
+          "internalType": "contract Treasury",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "target",
+          "type": "address"
+        }
+      ],
+      "name": "voteToKill",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "votes",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "winners",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "stateMutability": "payable",
+      "type": "receive"
+    }
+  ],
+  "transactionHash": "0xa4f27b1f4cb90863f366fc16d7473021d0044e81f0ccc129b5b54b6e9ac2da0f",
+  "receipt": {
+    "to": null,
+    "from": "0xB05986925d2e3697C6a91b95696D2D0917F87db7",
+    "contractAddress": "0xC10dE801304cD6dd8a38d1385fd9b684112086f4",
+    "transactionIndex": 0,
+    "gasUsed": "1273310",
+    "logsBloom": "0x00000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000008000000000000000000040000000000000000000000000000000000000800000000000000000000100000000000000000000000000100000000000000000000000000000000080000000000000000000040000100000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000004000000000000400000001000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000000000100000",
+    "blockHash": "0xedddff5076fc6716202e8d692abf19f55d61cd58907bc486610236d7c2bd199e",
+    "transactionHash": "0xa4f27b1f4cb90863f366fc16d7473021d0044e81f0ccc129b5b54b6e9ac2da0f",
+    "logs": [
+      {
+        "transactionIndex": 0,
+        "blockNumber": 14690090,
+        "transactionHash": "0xa4f27b1f4cb90863f366fc16d7473021d0044e81f0ccc129b5b54b6e9ac2da0f",
+        "address": "0x0000000000000000000000000000000000001010",
+        "topics": [
+          "0x4dfe1bbbcf077ddc3e01291eea2d5c70c2b422b415d95645b9adcfd678cb1d63",
+          "0x0000000000000000000000000000000000000000000000000000000000001010",
+          "0x000000000000000000000000b05986925d2e3697c6a91b95696d2d0917f87db7",
+          "0x0000000000000000000000004631753190f2f5a15a7ba172bbac102b7d95fa22"
+        ],
+        "data": "0x00000000000000000000000000000000000000000000000000abe69c4bf117fe0000000000000000000000000000000000000000000000000d8cb01e7f6416980000000000000000000000000000000000000000000003118c5d4417c3dde3410000000000000000000000000000000000000000000000000ce0c9823372fe9a0000000000000000000000000000000000000000000003118d092ab40fcefb3f",
+        "logIndex": 0,
+        "blockHash": "0xedddff5076fc6716202e8d692abf19f55d61cd58907bc486610236d7c2bd199e"
+      }
+    ],
+    "blockNumber": 14690090,
+    "cumulativeGasUsed": "1273310",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0x5d733a6b4028DF07CD234aFb0924c0AE71663B5A"
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "22759a4b3d62b22c56ecf7e4e3dd153b",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_treasuryAddress\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"victim\",\"type\":\"address\"}],\"name\":\"DayNarration\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"winners\",\"type\":\"address[]\"}],\"name\":\"GameEnded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[],\"name\":\"GameReset\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[],\"name\":\"GameStarted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"killer\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"victim\",\"type\":\"address\"}],\"name\":\"NightNarration\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"voter\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"target\",\"type\":\"address\"}],\"name\":\"PlayerVoted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"winner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"PrizeClaimed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"player\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"enum MafiaGame.Role\",\"name\":\"role\",\"type\":\"uint8\"}],\"name\":\"RoleAssigned\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[],\"name\":\"VotingRestarted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"mostVoted\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"highestVotes\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"isTie\",\"type\":\"bool\"}],\"name\":\"VotingResult\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"activePlayer\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"target\",\"type\":\"address\"}],\"name\":\"assassinKill\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"claimPrize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"currentState\",\"outputs\":[{\"internalType\":\"enum MafiaGame.GameState\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAllPlayers\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"playerAddress\",\"type\":\"address\"},{\"internalType\":\"enum MafiaGame.Role\",\"name\":\"role\",\"type\":\"uint8\"},{\"internalType\":\"bool\",\"name\":\"isAlive\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"hasVoted\",\"type\":\"bool\"}],\"internalType\":\"struct MafiaGame.Player[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAllWinners\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"joinGame\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"lastKilled\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"playerAddresses\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"players\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"playerAddress\",\"type\":\"address\"},{\"internalType\":\"enum MafiaGame.Role\",\"name\":\"role\",\"type\":\"uint8\"},{\"internalType\":\"bool\",\"name\":\"isAlive\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"hasVoted\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"startTime\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalVotes\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"treasury\",\"outputs\":[{\"internalType\":\"contract Treasury\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"target\",\"type\":\"address\"}],\"name\":\"voteToKill\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"votes\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"winners\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"stateMutability\":\"payable\",\"type\":\"receive\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/MafiaGame.sol\":\"MafiaGame\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/access/Ownable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.0) (access/Ownable.sol)\\n\\npragma solidity ^0.8.20;\\n\\nimport {Context} from \\\"../utils/Context.sol\\\";\\n\\n/**\\n * @dev Contract module which provides a basic access control mechanism, where\\n * there is an account (an owner) that can be granted exclusive access to\\n * specific functions.\\n *\\n * The initial owner is set to the address provided by the deployer. This can\\n * later be changed with {transferOwnership}.\\n *\\n * This module is used through inheritance. It will make available the modifier\\n * `onlyOwner`, which can be applied to your functions to restrict their use to\\n * the owner.\\n */\\nabstract contract Ownable is Context {\\n    address private _owner;\\n\\n    /**\\n     * @dev The caller account is not authorized to perform an operation.\\n     */\\n    error OwnableUnauthorizedAccount(address account);\\n\\n    /**\\n     * @dev The owner is not a valid owner account. (eg. `address(0)`)\\n     */\\n    error OwnableInvalidOwner(address owner);\\n\\n    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);\\n\\n    /**\\n     * @dev Initializes the contract setting the address provided by the deployer as the initial owner.\\n     */\\n    constructor(address initialOwner) {\\n        if (initialOwner == address(0)) {\\n            revert OwnableInvalidOwner(address(0));\\n        }\\n        _transferOwnership(initialOwner);\\n    }\\n\\n    /**\\n     * @dev Throws if called by any account other than the owner.\\n     */\\n    modifier onlyOwner() {\\n        _checkOwner();\\n        _;\\n    }\\n\\n    /**\\n     * @dev Returns the address of the current owner.\\n     */\\n    function owner() public view virtual returns (address) {\\n        return _owner;\\n    }\\n\\n    /**\\n     * @dev Throws if the sender is not the owner.\\n     */\\n    function _checkOwner() internal view virtual {\\n        if (owner() != _msgSender()) {\\n            revert OwnableUnauthorizedAccount(_msgSender());\\n        }\\n    }\\n\\n    /**\\n     * @dev Leaves the contract without owner. It will not be possible to call\\n     * `onlyOwner` functions. Can only be called by the current owner.\\n     *\\n     * NOTE: Renouncing ownership will leave the contract without an owner,\\n     * thereby disabling any functionality that is only available to the owner.\\n     */\\n    function renounceOwnership() public virtual onlyOwner {\\n        _transferOwnership(address(0));\\n    }\\n\\n    /**\\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\\n     * Can only be called by the current owner.\\n     */\\n    function transferOwnership(address newOwner) public virtual onlyOwner {\\n        if (newOwner == address(0)) {\\n            revert OwnableInvalidOwner(address(0));\\n        }\\n        _transferOwnership(newOwner);\\n    }\\n\\n    /**\\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\\n     * Internal function without access restriction.\\n     */\\n    function _transferOwnership(address newOwner) internal virtual {\\n        address oldOwner = _owner;\\n        _owner = newOwner;\\n        emit OwnershipTransferred(oldOwner, newOwner);\\n    }\\n}\\n\",\"keccak256\":\"0xff6d0bb2e285473e5311d9d3caacb525ae3538a80758c10649a4d61029b017bb\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/Context.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.1) (utils/Context.sol)\\n\\npragma solidity ^0.8.20;\\n\\n/**\\n * @dev Provides information about the current execution context, including the\\n * sender of the transaction and its data. While these are generally available\\n * via msg.sender and msg.data, they should not be accessed in such a direct\\n * manner, since when dealing with meta-transactions the account sending and\\n * paying for execution may not be the actual sender (as far as an application\\n * is concerned).\\n *\\n * This contract is only required for intermediate, library-like contracts.\\n */\\nabstract contract Context {\\n    function _msgSender() internal view virtual returns (address) {\\n        return msg.sender;\\n    }\\n\\n    function _msgData() internal view virtual returns (bytes calldata) {\\n        return msg.data;\\n    }\\n\\n    function _contextSuffixLength() internal view virtual returns (uint256) {\\n        return 0;\\n    }\\n}\\n\",\"keccak256\":\"0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2\",\"license\":\"MIT\"},\"contracts/MafiaGame.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\r\\npragma solidity ^0.8.0;\\r\\n\\r\\nimport \\\"./Treasury.sol\\\";\\r\\n\\r\\ncontract MafiaGame {\\r\\n\\tenum Role {\\r\\n\\t\\tAssassin,\\r\\n\\t\\tPolice,\\r\\n\\t\\tCitizen\\r\\n\\t}\\r\\n\\tenum GameState {\\r\\n\\t\\tWaiting,\\r\\n\\t\\tAssigningRoles,\\r\\n\\t\\tNight,\\r\\n\\t\\tDay,\\r\\n\\t\\tFinalizing,\\r\\n\\t\\tFinished\\r\\n\\t}\\r\\n\\r\\n\\tstruct Player {\\r\\n\\t\\taddress playerAddress;\\r\\n\\t\\tRole role;\\r\\n\\t\\tbool isAlive;\\r\\n\\t\\tbool hasVoted;\\r\\n\\t}\\r\\n\\r\\n\\tTreasury public treasury;\\r\\n\\tGameState public currentState;\\r\\n\\taddress public activePlayer;\\r\\n\\taddress[] public playerAddresses;\\r\\n\\taddress[] public winners;\\r\\n\\tmapping(address => Player) public players;\\r\\n\\tmapping(address => uint) public votes;\\r\\n\\r\\n\\tuint public totalVotes;\\r\\n\\tuint public startTime;\\r\\n\\taddress public lastKilled;\\r\\n\\r\\n\\tevent GameStarted();\\r\\n\\tevent RoleAssigned(address indexed player, Role role);\\r\\n\\tevent NightNarration(address indexed killer, address indexed victim);\\r\\n\\tevent PlayerVoted(address indexed voter, address indexed target);\\r\\n\\tevent VotingRestarted();\\r\\n\\tevent DayNarration(address indexed victim);\\r\\n\\tevent VotingResult(\\r\\n\\t\\taddress indexed mostVoted,\\r\\n\\t\\tuint highestVotes,\\r\\n\\t\\tbool isTie\\r\\n\\t);\\r\\n\\tevent PrizeClaimed(address indexed winner, uint amount);\\r\\n\\tevent GameEnded(address[] winners);\\r\\n\\tevent GameReset();\\r\\n\\r\\n\\tmodifier onlyActivePlayer() {\\r\\n\\t\\trequire(msg.sender == activePlayer, \\\"Only active player allowed\\\");\\r\\n\\t\\t_;\\r\\n\\t}\\r\\n\\r\\n\\tmodifier onlyInState(GameState state) {\\r\\n\\t\\trequire(currentState == state, \\\"Invalid game state!\\\");\\r\\n\\t\\t_;\\r\\n\\t}\\r\\n\\r\\n\\tmodifier onlyWinner() {\\r\\n\\t\\trequire(\\r\\n\\t\\t\\twinners.length > 0 && winners[0] == activePlayer,\\r\\n\\t\\t\\t\\\"Caller is not the winner!\\\"\\r\\n\\t\\t);\\r\\n\\t\\t_;\\r\\n\\t}\\r\\n\\r\\n\\tconstructor(address _treasuryAddress) {\\r\\n\\t\\ttreasury = Treasury(_treasuryAddress);\\r\\n\\t\\tcurrentState = GameState.Waiting;\\r\\n\\t}\\r\\n\\r\\n\\tfunction joinGame() external payable onlyInState(GameState.Waiting) {\\r\\n\\t\\trequire(msg.value == 0.1 ether, \\\"Must pay 0.1 ETH to join\\\");\\r\\n\\t\\trequire(playerAddresses.length == 0, \\\"Game already has active player\\\");\\r\\n\\r\\n\\t\\tactivePlayer = msg.sender;\\r\\n\\t\\tplayerAddresses.push(msg.sender);\\r\\n\\t\\tplayers[msg.sender] = Player(msg.sender, Role.Assassin, true, false);\\r\\n\\t\\ttreasury.deposit{ value: msg.value }(msg.sender);\\r\\n\\r\\n\\t\\taddVirtualPlayers();\\r\\n\\t\\tstartGame();\\r\\n\\t}\\r\\n\\r\\n\\tfunction addVirtualPlayers() private {\\r\\n\\t\\trequire(\\r\\n\\t\\t\\taddress(this).balance >= 0.3 ether,\\r\\n\\t\\t\\t\\\"Insufficient balance for virtual players\\\"\\r\\n\\t\\t);\\r\\n\\r\\n\\t\\tfor (uint i = 1; i <= 3; i++) {\\r\\n\\t\\t\\taddress virtualPlayer = address(uint160(i));\\r\\n\\t\\t\\tplayerAddresses.push(virtualPlayer);\\r\\n\\t\\t\\ttreasury.deposit{ value: 0.1 ether }(virtualPlayer);\\r\\n\\t\\t\\tplayers[virtualPlayer] = Player(\\r\\n\\t\\t\\t\\tvirtualPlayer,\\r\\n\\t\\t\\t\\tRole(\\r\\n\\t\\t\\t\\t\\ti == 1\\r\\n\\t\\t\\t\\t\\t\\t? Role.Assassin\\r\\n\\t\\t\\t\\t\\t\\t: i == 2\\r\\n\\t\\t\\t\\t\\t\\t\\t? Role.Police\\r\\n\\t\\t\\t\\t\\t\\t\\t: Role.Citizen\\r\\n\\t\\t\\t\\t),\\r\\n\\t\\t\\t\\ttrue,\\r\\n\\t\\t\\t\\tfalse\\r\\n\\t\\t\\t);\\r\\n\\t\\t}\\r\\n\\t}\\r\\n\\r\\n\\tfunction startGame() private {\\r\\n\\t\\tcurrentState = GameState.AssigningRoles;\\r\\n\\t\\tstartTime = block.timestamp;\\r\\n\\t\\temit GameStarted();\\r\\n\\r\\n\\t\\tfor (uint i = 0; i < playerAddresses.length; i++) {\\r\\n\\t\\t\\temit RoleAssigned(\\r\\n\\t\\t\\t\\tplayerAddresses[i],\\r\\n\\t\\t\\t\\tplayers[playerAddresses[i]].role\\r\\n\\t\\t\\t);\\r\\n\\t\\t}\\r\\n\\r\\n\\t\\tcurrentState = GameState.Night;\\r\\n\\t}\\r\\n\\r\\n\\tfunction assassinKill(\\r\\n\\t\\taddress target\\r\\n\\t) external onlyActivePlayer onlyInState(GameState.Night) {\\r\\n\\t\\trequire(players[target].isAlive, \\\"Target is already dead!\\\");\\r\\n\\r\\n\\t\\tplayers[target].isAlive = false;\\r\\n\\t\\tlastKilled = target;\\r\\n\\t\\tstartTime = block.timestamp;\\r\\n\\t\\tcurrentState = GameState.Day;\\r\\n\\t\\temit NightNarration(msg.sender, target);\\r\\n\\t}\\r\\n\\r\\n\\tfunction voteToKill(\\r\\n\\t\\taddress target\\r\\n\\t) external onlyActivePlayer onlyInState(GameState.Day) {\\r\\n\\t\\trequire(players[target].isAlive, \\\"Target is already dead!\\\");\\r\\n\\t\\tplayers[activePlayer].hasVoted = true;\\r\\n\\t\\tvotes[target]++;\\r\\n\\t\\ttotalVotes = 3;\\r\\n\\r\\n\\t\\tplayers[target].isAlive = false;\\r\\n\\t\\tlastKilled = target;\\r\\n\\t\\tcurrentState = GameState.Finalizing;\\r\\n\\t\\twinners.push(activePlayer);\\r\\n\\r\\n\\t\\temit PlayerVoted(activePlayer, target);\\r\\n\\t\\temit DayNarration(target);\\r\\n\\t\\temit VotingResult(target, votes[target], false);\\r\\n\\t}\\r\\n\\r\\n\\tfunction resetVoting() private {\\r\\n\\t\\tfor (uint i = 0; i < playerAddresses.length; i++) {\\r\\n\\t\\t\\tplayers[playerAddresses[i]].hasVoted = false;\\r\\n\\t\\t\\tvotes[playerAddresses[i]] = 0;\\r\\n\\t\\t}\\r\\n\\t\\ttotalVotes = 0;\\r\\n\\t\\tstartTime = block.timestamp;\\r\\n\\t}\\r\\n\\r\\n\\tfunction claimPrize()\\r\\n\\t\\texternal\\r\\n\\t\\tonlyActivePlayer\\r\\n\\t\\tonlyWinner\\r\\n\\t\\tonlyInState(GameState.Finalizing)\\r\\n\\t{\\r\\n\\t\\tuint totalPrize = treasury.getBalance();\\r\\n\\t\\ttreasury.distributePrize(payable(activePlayer), totalPrize);\\r\\n\\r\\n\\t\\tcurrentState = GameState.Finished;\\r\\n\\t\\tresetGame();\\r\\n\\t\\temit GameEnded(winners);\\r\\n\\t}\\r\\n\\r\\n\\tfunction resetGame() private {\\r\\n\\t\\tfor (uint i = 0; i < playerAddresses.length; i++) {\\r\\n\\t\\t\\tdelete players[playerAddresses[i]];\\r\\n\\t\\t\\tdelete votes[playerAddresses[i]];\\r\\n\\t\\t}\\r\\n\\r\\n\\t\\ttreasury.resetBalances(playerAddresses);\\r\\n\\t\\tdelete playerAddresses;\\r\\n\\t\\tdelete winners;\\r\\n\\t\\tdelete lastKilled;\\r\\n\\t\\tdelete activePlayer;\\r\\n\\t\\ttotalVotes = 0;\\r\\n\\t\\tstartTime = 0;\\r\\n\\t\\tcurrentState = GameState.Waiting;\\r\\n\\t\\temit GameReset();\\r\\n\\t}\\r\\n\\r\\n\\tfunction getAllPlayers() public view returns (Player[] memory) {\\r\\n\\t\\tPlayer[] memory allPlayers = new Player[](playerAddresses.length);\\r\\n\\t\\tfor (uint256 i = 0; i < playerAddresses.length; i++) {\\r\\n\\t\\t\\tallPlayers[i] = players[playerAddresses[i]];\\r\\n\\t\\t}\\r\\n\\t\\treturn allPlayers;\\r\\n\\t}\\r\\n\\r\\n\\tfunction getAllWinners() public view returns (address[] memory) {\\r\\n\\t\\taddress[] memory allWinners = new address[](1);\\r\\n\\t\\tallWinners[0] = activePlayer;\\r\\n\\r\\n\\t\\treturn allWinners;\\r\\n\\t}\\r\\n\\r\\n\\treceive() external payable {}\\r\\n}\\r\\n\",\"keccak256\":\"0xa223ff030011aeb6e73866c7347ce7e34505c7d84dfc35bdfbafd65db196c214\",\"license\":\"MIT\"},\"contracts/Treasury.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\r\\npragma solidity ^0.8.0;\\r\\n\\r\\nimport \\\"@openzeppelin/contracts/access/Ownable.sol\\\";\\r\\n\\r\\ncontract Treasury is Ownable(msg.sender) {\\r\\n\\taddress public mafiaGame;\\r\\n\\tmapping(address => uint) public balances;\\r\\n\\r\\n\\tmodifier onlyMafiaGame() {\\r\\n\\t\\trequire(\\r\\n\\t\\t\\tmsg.sender == mafiaGame,\\r\\n\\t\\t\\t\\\"Only MafiaGame can call this function\\\"\\r\\n\\t\\t);\\r\\n\\t\\t_;\\r\\n\\t}\\r\\n\\r\\n\\tfunction setMafiaGameAddress(address _mafiaGame) external onlyOwner {\\r\\n\\t\\trequire(_mafiaGame != address(0), \\\"Invalid MafiaGame address\\\");\\r\\n\\t\\tmafiaGame = _mafiaGame;\\r\\n\\t}\\r\\n\\r\\n\\tfunction deposit(address player) external payable onlyMafiaGame {\\r\\n\\t\\trequire(msg.value > 0, \\\"Deposit must be greater than zero\\\");\\r\\n\\t\\tbalances[player] += msg.value;\\r\\n\\t}\\r\\n\\r\\n\\tfunction withdraw(address payable to) external onlyMafiaGame {\\r\\n\\t\\tuint amount = balances[to];\\r\\n\\t\\trequire(amount > 0, \\\"No funds to withdraw\\\");\\r\\n\\r\\n\\t\\tbalances[to] = 0;\\r\\n\\t\\tto.transfer(amount);\\r\\n\\t}\\r\\n\\r\\n\\tfunction distributePrize(\\r\\n\\t\\taddress payable recipient,\\r\\n\\t\\tuint amount\\r\\n\\t) external onlyMafiaGame {\\r\\n\\t\\trequire(address(this).balance >= amount, \\\"Not enough funds\\\");\\r\\n\\t\\tbalances[recipient] = 0;\\r\\n\\t\\trecipient.transfer(amount);\\r\\n\\t}\\r\\n\\r\\n\\tfunction getBalance() external view returns (uint) {\\r\\n\\t\\treturn address(this).balance;\\r\\n\\t}\\r\\n\\r\\n\\tfunction resetBalances(\\r\\n\\t\\taddress[] memory playerAddresses\\r\\n\\t) external onlyMafiaGame {\\r\\n\\t\\tfor (uint i = 0; i < playerAddresses.length; i++) {\\r\\n\\t\\t\\tbalances[playerAddresses[i]] = 0;\\r\\n\\t\\t}\\r\\n\\t}\\r\\n}\\r\\n\",\"keccak256\":\"0x78e52d93bc67b11e470783ca11fa51d76d5a6de9d88229b2473a02e4f81d909a\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5060405161163338038061163383398101604081905261002f91610054565b600080546001600160a81b0319166001600160a01b0392909216919091179055610084565b60006020828403121561006657600080fd5b81516001600160a01b038116811461007d57600080fd5b9392505050565b6115a0806100936000396000f3fe6080604052600436106100f75760003560e01c8063a2fb11751161008a578063dc6b862711610059578063dc6b862714610298578063e2eb41ff146102ba578063efa1c48214610321578063fd4cee591461034357600080fd5b8063a2fb117514610223578063b06837e414610243578063d4f77b1c14610263578063d8bff5a51461026b57600080fd5b806361d027b3116100c657806361d027b3146101b857806370740ac9146101d857806378e97925146101ed5780637fdffd231461020357600080fd5b80630c3f6acf146101035780630d15fd771461013a57806315c6aee21461015e578063599e846c1461019657600080fd5b366100fe57005b600080fd5b34801561010f57600080fd5b5060005461012490600160a01b900460ff1681565b60405161013191906112d0565b60405180910390f35b34801561014657600080fd5b5061015060065481565b604051908152602001610131565b34801561016a57600080fd5b5061017e6101793660046112ea565b610363565b6040516001600160a01b039091168152602001610131565b3480156101a257600080fd5b506101b66101b1366004611303565b61038d565b005b3480156101c457600080fd5b5060005461017e906001600160a01b031681565b3480156101e457600080fd5b506101b6610617565b3480156101f957600080fd5b5061015060075481565b34801561020f57600080fd5b5060015461017e906001600160a01b031681565b34801561022f57600080fd5b5061017e61023e3660046112ea565b61084a565b34801561024f57600080fd5b5060085461017e906001600160a01b031681565b6101b661085a565b34801561027757600080fd5b50610150610286366004611303565b60056020526000908152604090205481565b3480156102a457600080fd5b506102ad610aac565b6040516101319190611333565b3480156102c657600080fd5b506103116102d5366004611303565b6004602052600090815260409020546001600160a01b0381169060ff600160a01b8204811691600160a81b8104821691600160b01b9091041684565b6040516101319493929190611394565b34801561032d57600080fd5b50610336610b0f565b60405161013191906113c8565b34801561034f57600080fd5b506101b661035e366004611303565b610c75565b6002818154811061037357600080fd5b6000918252602090912001546001600160a01b0316905081565b6001546001600160a01b031633146103c05760405162461bcd60e51b81526004016103b790611442565b60405180910390fd5b600380600054600160a01b900460ff1660058111156103e1576103e16112ba565b146103fe5760405162461bcd60e51b81526004016103b790611479565b6001600160a01b038216600090815260046020526040902054600160a81b900460ff166104675760405162461bcd60e51b815260206004820152601760248201527654617267657420697320616c726561647920646561642160481b60448201526064016103b7565b6001546001600160a01b039081166000908152600460209081526040808320805460ff60b01b1916600160b01b1790559285168252600590529081208054916104af836114a6565b909155505060036006556001600160a01b03821660008181526004602081905260408220805460ff60a81b19169055600880546001600160a01b031916909317909255805460ff60a01b1916600160a01b8302179055506001805460038054808401825560009182527fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85b0180546001600160a01b0319166001600160a01b0393841617905591546040518583169391909216917f4d835b4ffc7dc2d3c6f0cd3c6c80f475d15354601ae8cf9e8d9ddf64ab434afe9190a36040516001600160a01b038316907f106a39c12eeb61cce8f640e00b9548c9c26e6e31bbd4bc1f5c1f1f572d2e28c090600090a26001600160a01b0382166000818152600560205260408082205490517f245a3b067dfd7827cee6cf01f66e6c3698c8d00379011dae6510a7c68c9c7f429261060b9282521515602082015260400190565b60405180910390a25050565b6001546001600160a01b031633146106415760405162461bcd60e51b81526004016103b790611442565b600354158015906106865750600154600380546001600160a01b039092169160009061066f5761066f6114cd565b6000918252602090912001546001600160a01b0316145b6106d25760405162461bcd60e51b815260206004820152601960248201527f43616c6c6572206973206e6f74207468652077696e6e6572210000000000000060448201526064016103b7565b600480600054600160a01b900460ff1660058111156106f3576106f36112ba565b146107105760405162461bcd60e51b81526004016103b790611479565b60008060009054906101000a90046001600160a01b03166001600160a01b03166312065fe06040518163ffffffff1660e01b8152600401602060405180830381865afa158015610764573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061078891906114e3565b600054600154604051636af5104d60e11b81526001600160a01b03918216600482015260248101849052929350169063d5ea209a90604401600060405180830381600087803b1580156107da57600080fd5b505af11580156107ee573d6000803e3d6000fd5b50506000805460ff60a01b1916600560a01b1790555061080e9050610dbb565b7f79316fa24603d03bcfa9afb308d47aaa8a9b3448543623891e91aca882fb5c75600360405161083e91906114fc565b60405180910390a15050565b6003818154811061037357600080fd5b600080600054600160a01b900460ff16600581111561087b5761087b6112ba565b146108985760405162461bcd60e51b81526004016103b790611479565b3467016345785d8a0000146108ef5760405162461bcd60e51b815260206004820152601860248201527f4d7573742070617920302e312045544820746f206a6f696e000000000000000060448201526064016103b7565b6002541561093f5760405162461bcd60e51b815260206004820152601e60248201527f47616d6520616c7265616479206861732061637469766520706c61796572000060448201526064016103b7565b60018054336001600160a01b0319918216811783556002805480850182557f405787fa12a823e0f2b7631cc41b3ba8828b3321ca811111fa75cd3aa3bb5ace0180548416831790556040805160808101825283815260006020808301828152838501989098526060830182905294815260049094529220825181546001600160a01b039091169481168517825594519294909384926001600160a81b03199092161790600160a01b9084908111156109f9576109f96112ba565b021790555060408281015182546060909401511515600160b01b0260ff60b01b19911515600160a81b029190911661ffff60a81b1990941693909317929092179055600054905163f340fa0160e01b81523360048201526001600160a01b039091169063f340fa019034906024016000604051808303818588803b158015610a8057600080fd5b505af1158015610a94573d6000803e3d6000fd5b5050505050610aa1610f3b565b610aa961116a565b50565b6040805160018082528183019092526060916000919060208083019080368337505060015482519293506001600160a01b031691839150600090610af257610af26114cd565b6001600160a01b0390921660209283029190910190910152919050565b60025460609060009067ffffffffffffffff811115610b3057610b30611540565b604051908082528060200260200182016040528015610b8257816020015b604080516080810182526000808252602080830182905292820181905260608201528252600019909201910181610b4e5790505b50905060005b600254811015610c6f576004600060028381548110610ba957610ba96114cd565b60009182526020808320909101546001600160a01b0390811684528382019490945260409283019091208251608081019093528054938416835291929083019060ff600160a01b909104166002811115610c0557610c056112ba565b6002811115610c1657610c166112ba565b8152905460ff600160a81b8204811615156020840152600160b01b9091041615156040909101528251839083908110610c5157610c516114cd565b60200260200101819052508080610c67906114a6565b915050610b88565b50919050565b6001546001600160a01b03163314610c9f5760405162461bcd60e51b81526004016103b790611442565b600280600054600160a01b900460ff166005811115610cc057610cc06112ba565b14610cdd5760405162461bcd60e51b81526004016103b790611479565b6001600160a01b038216600090815260046020526040902054600160a81b900460ff16610d465760405162461bcd60e51b815260206004820152601760248201527654617267657420697320616c726561647920646561642160481b60448201526064016103b7565b6001600160a01b038216600081815260046020526040808220805460ff60a81b19169055600880546001600160a01b0319168417905542600755815460ff60a01b1916600360a01b1782555133917f2b81294139c721e3094b6771064aefefe3d473726345f650a519a237cb2a0c3691a35050565b60005b600254811015610e61576004600060028381548110610ddf57610ddf6114cd565b60009182526020808320909101546001600160a01b03168352820192909252604001812080546001600160b81b031916905560028054600592919084908110610e2a57610e2a6114cd565b60009182526020808320909101546001600160a01b0316835282019290925260400181205580610e59816114a6565b915050610dbe565b50600054604051631cbb436d60e31b81526001600160a01b039091169063e5da1b6890610e93906002906004016114fc565b600060405180830381600087803b158015610ead57600080fd5b505af1158015610ec1573d6000803e3d6000fd5b5050505060026000610ed39190611288565b610edf60036000611288565b600880546001600160a01b0319908116909155600180549091169055600060068190556007819055805460ff60a01b191681556040517fc6976b6410888b44c765590c8368eb4a60e0431d4ad683c8a53ea85a8479f22e9190a1565b670429d069189e0000471015610fa45760405162461bcd60e51b815260206004820152602860248201527f496e73756666696369656e742062616c616e636520666f72207669727475616c60448201526720706c617965727360c01b60648201526084016103b7565b60015b60038111610aa9576002805460018101825560009182527f405787fa12a823e0f2b7631cc41b3ba8828b3321ca811111fa75cd3aa3bb5ace0180546001600160a01b0319166001600160a01b03848116918217909255915460405163f340fa0160e01b81526004810193909352839291169063f340fa019067016345785d8a0000906024016000604051808303818588803b15801561104557600080fd5b505af1158015611059573d6000803e3d6000fd5b50505050506040518060800160405280826001600160a01b0316815260200183600114611096578360021461108f576002611099565b6001611099565b60005b60028111156110aa576110aa6112ba565b81526001602080830191909152600060409283018190526001600160a01b038086168252600483529290208351815493166001600160a01b0319841681178255918401519092909183916001600160a81b03191617600160a01b836002811115611116576111166112ba565b0217905550604082015181546060909301511515600160b01b0260ff60b01b19911515600160a81b029190911661ffff60a81b19909316929092179190911790555080611162816114a6565b915050610fa7565b6000805460ff60a01b1916600160a01b178155426007556040517f762f260439bb4be3ef6e4dc2786e2e7bd187d3d80b79057d7a424fe98563e3359190a160005b60025481101561127257600281815481106111c8576111c86114cd565b6000918252602082200154600280546001600160a01b03909216927f4ac36fa53f167ceb85964be512e01de2a3b8bdb9862f917da079deeeff689b38926004929086908110611219576112196114cd565b60009182526020808320909101546001600160a01b0316835282019290925260409081019091205490516112589160ff600160a01b9091041690611556565b60405180910390a28061126a816114a6565b9150506111ab565b506000805460ff60a01b1916600160a11b179055565b5080546000825590600052602060002090810190610aa991905b808211156112b657600081556001016112a2565b5090565b634e487b7160e01b600052602160045260246000fd5b60208101600683106112e4576112e46112ba565b91905290565b6000602082840312156112fc57600080fd5b5035919050565b60006020828403121561131557600080fd5b81356001600160a01b038116811461132c57600080fd5b9392505050565b6020808252825182820181905260009190848201906040850190845b818110156113745783516001600160a01b03168352928401929184019160010161134f565b50909695505050505050565b60038110611390576113906112ba565b9052565b6001600160a01b0385168152608081016113b16020830186611380565b921515604082015290151560609091015292915050565b602080825282518282018190526000919060409081850190868401855b8281101561143557815180516001600160a01b031685528681015161140c88870182611380565b5080860151151585870152606090810151151590850152608090930192908501906001016113e5565b5091979650505050505050565b6020808252601a908201527f4f6e6c792061637469766520706c6179657220616c6c6f776564000000000000604082015260600190565b602080825260139082015272496e76616c69642067616d652073746174652160681b604082015260600190565b6000600182016114c657634e487b7160e01b600052601160045260246000fd5b5060010190565b634e487b7160e01b600052603260045260246000fd5b6000602082840312156114f557600080fd5b5051919050565b6020808252825482820181905260008481528281209092916040850190845b818110156113745783546001600160a01b03168352600193840193928501920161151b565b634e487b7160e01b600052604160045260246000fd5b602081016115648284611380565b9291505056fea2646970667358221220f7d3c6e9fbc0e4b99b2ad2f91ec593ac5c8583649022d6c7a602e168fd5da89b64736f6c63430008140033",
+  "deployedBytecode": "0x6080604052600436106100f75760003560e01c8063a2fb11751161008a578063dc6b862711610059578063dc6b862714610298578063e2eb41ff146102ba578063efa1c48214610321578063fd4cee591461034357600080fd5b8063a2fb117514610223578063b06837e414610243578063d4f77b1c14610263578063d8bff5a51461026b57600080fd5b806361d027b3116100c657806361d027b3146101b857806370740ac9146101d857806378e97925146101ed5780637fdffd231461020357600080fd5b80630c3f6acf146101035780630d15fd771461013a57806315c6aee21461015e578063599e846c1461019657600080fd5b366100fe57005b600080fd5b34801561010f57600080fd5b5060005461012490600160a01b900460ff1681565b60405161013191906112d0565b60405180910390f35b34801561014657600080fd5b5061015060065481565b604051908152602001610131565b34801561016a57600080fd5b5061017e6101793660046112ea565b610363565b6040516001600160a01b039091168152602001610131565b3480156101a257600080fd5b506101b66101b1366004611303565b61038d565b005b3480156101c457600080fd5b5060005461017e906001600160a01b031681565b3480156101e457600080fd5b506101b6610617565b3480156101f957600080fd5b5061015060075481565b34801561020f57600080fd5b5060015461017e906001600160a01b031681565b34801561022f57600080fd5b5061017e61023e3660046112ea565b61084a565b34801561024f57600080fd5b5060085461017e906001600160a01b031681565b6101b661085a565b34801561027757600080fd5b50610150610286366004611303565b60056020526000908152604090205481565b3480156102a457600080fd5b506102ad610aac565b6040516101319190611333565b3480156102c657600080fd5b506103116102d5366004611303565b6004602052600090815260409020546001600160a01b0381169060ff600160a01b8204811691600160a81b8104821691600160b01b9091041684565b6040516101319493929190611394565b34801561032d57600080fd5b50610336610b0f565b60405161013191906113c8565b34801561034f57600080fd5b506101b661035e366004611303565b610c75565b6002818154811061037357600080fd5b6000918252602090912001546001600160a01b0316905081565b6001546001600160a01b031633146103c05760405162461bcd60e51b81526004016103b790611442565b60405180910390fd5b600380600054600160a01b900460ff1660058111156103e1576103e16112ba565b146103fe5760405162461bcd60e51b81526004016103b790611479565b6001600160a01b038216600090815260046020526040902054600160a81b900460ff166104675760405162461bcd60e51b815260206004820152601760248201527654617267657420697320616c726561647920646561642160481b60448201526064016103b7565b6001546001600160a01b039081166000908152600460209081526040808320805460ff60b01b1916600160b01b1790559285168252600590529081208054916104af836114a6565b909155505060036006556001600160a01b03821660008181526004602081905260408220805460ff60a81b19169055600880546001600160a01b031916909317909255805460ff60a01b1916600160a01b8302179055506001805460038054808401825560009182527fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85b0180546001600160a01b0319166001600160a01b0393841617905591546040518583169391909216917f4d835b4ffc7dc2d3c6f0cd3c6c80f475d15354601ae8cf9e8d9ddf64ab434afe9190a36040516001600160a01b038316907f106a39c12eeb61cce8f640e00b9548c9c26e6e31bbd4bc1f5c1f1f572d2e28c090600090a26001600160a01b0382166000818152600560205260408082205490517f245a3b067dfd7827cee6cf01f66e6c3698c8d00379011dae6510a7c68c9c7f429261060b9282521515602082015260400190565b60405180910390a25050565b6001546001600160a01b031633146106415760405162461bcd60e51b81526004016103b790611442565b600354158015906106865750600154600380546001600160a01b039092169160009061066f5761066f6114cd565b6000918252602090912001546001600160a01b0316145b6106d25760405162461bcd60e51b815260206004820152601960248201527f43616c6c6572206973206e6f74207468652077696e6e6572210000000000000060448201526064016103b7565b600480600054600160a01b900460ff1660058111156106f3576106f36112ba565b146107105760405162461bcd60e51b81526004016103b790611479565b60008060009054906101000a90046001600160a01b03166001600160a01b03166312065fe06040518163ffffffff1660e01b8152600401602060405180830381865afa158015610764573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061078891906114e3565b600054600154604051636af5104d60e11b81526001600160a01b03918216600482015260248101849052929350169063d5ea209a90604401600060405180830381600087803b1580156107da57600080fd5b505af11580156107ee573d6000803e3d6000fd5b50506000805460ff60a01b1916600560a01b1790555061080e9050610dbb565b7f79316fa24603d03bcfa9afb308d47aaa8a9b3448543623891e91aca882fb5c75600360405161083e91906114fc565b60405180910390a15050565b6003818154811061037357600080fd5b600080600054600160a01b900460ff16600581111561087b5761087b6112ba565b146108985760405162461bcd60e51b81526004016103b790611479565b3467016345785d8a0000146108ef5760405162461bcd60e51b815260206004820152601860248201527f4d7573742070617920302e312045544820746f206a6f696e000000000000000060448201526064016103b7565b6002541561093f5760405162461bcd60e51b815260206004820152601e60248201527f47616d6520616c7265616479206861732061637469766520706c61796572000060448201526064016103b7565b60018054336001600160a01b0319918216811783556002805480850182557f405787fa12a823e0f2b7631cc41b3ba8828b3321ca811111fa75cd3aa3bb5ace0180548416831790556040805160808101825283815260006020808301828152838501989098526060830182905294815260049094529220825181546001600160a01b039091169481168517825594519294909384926001600160a81b03199092161790600160a01b9084908111156109f9576109f96112ba565b021790555060408281015182546060909401511515600160b01b0260ff60b01b19911515600160a81b029190911661ffff60a81b1990941693909317929092179055600054905163f340fa0160e01b81523360048201526001600160a01b039091169063f340fa019034906024016000604051808303818588803b158015610a8057600080fd5b505af1158015610a94573d6000803e3d6000fd5b5050505050610aa1610f3b565b610aa961116a565b50565b6040805160018082528183019092526060916000919060208083019080368337505060015482519293506001600160a01b031691839150600090610af257610af26114cd565b6001600160a01b0390921660209283029190910190910152919050565b60025460609060009067ffffffffffffffff811115610b3057610b30611540565b604051908082528060200260200182016040528015610b8257816020015b604080516080810182526000808252602080830182905292820181905260608201528252600019909201910181610b4e5790505b50905060005b600254811015610c6f576004600060028381548110610ba957610ba96114cd565b60009182526020808320909101546001600160a01b0390811684528382019490945260409283019091208251608081019093528054938416835291929083019060ff600160a01b909104166002811115610c0557610c056112ba565b6002811115610c1657610c166112ba565b8152905460ff600160a81b8204811615156020840152600160b01b9091041615156040909101528251839083908110610c5157610c516114cd565b60200260200101819052508080610c67906114a6565b915050610b88565b50919050565b6001546001600160a01b03163314610c9f5760405162461bcd60e51b81526004016103b790611442565b600280600054600160a01b900460ff166005811115610cc057610cc06112ba565b14610cdd5760405162461bcd60e51b81526004016103b790611479565b6001600160a01b038216600090815260046020526040902054600160a81b900460ff16610d465760405162461bcd60e51b815260206004820152601760248201527654617267657420697320616c726561647920646561642160481b60448201526064016103b7565b6001600160a01b038216600081815260046020526040808220805460ff60a81b19169055600880546001600160a01b0319168417905542600755815460ff60a01b1916600360a01b1782555133917f2b81294139c721e3094b6771064aefefe3d473726345f650a519a237cb2a0c3691a35050565b60005b600254811015610e61576004600060028381548110610ddf57610ddf6114cd565b60009182526020808320909101546001600160a01b03168352820192909252604001812080546001600160b81b031916905560028054600592919084908110610e2a57610e2a6114cd565b60009182526020808320909101546001600160a01b0316835282019290925260400181205580610e59816114a6565b915050610dbe565b50600054604051631cbb436d60e31b81526001600160a01b039091169063e5da1b6890610e93906002906004016114fc565b600060405180830381600087803b158015610ead57600080fd5b505af1158015610ec1573d6000803e3d6000fd5b5050505060026000610ed39190611288565b610edf60036000611288565b600880546001600160a01b0319908116909155600180549091169055600060068190556007819055805460ff60a01b191681556040517fc6976b6410888b44c765590c8368eb4a60e0431d4ad683c8a53ea85a8479f22e9190a1565b670429d069189e0000471015610fa45760405162461bcd60e51b815260206004820152602860248201527f496e73756666696369656e742062616c616e636520666f72207669727475616c60448201526720706c617965727360c01b60648201526084016103b7565b60015b60038111610aa9576002805460018101825560009182527f405787fa12a823e0f2b7631cc41b3ba8828b3321ca811111fa75cd3aa3bb5ace0180546001600160a01b0319166001600160a01b03848116918217909255915460405163f340fa0160e01b81526004810193909352839291169063f340fa019067016345785d8a0000906024016000604051808303818588803b15801561104557600080fd5b505af1158015611059573d6000803e3d6000fd5b50505050506040518060800160405280826001600160a01b0316815260200183600114611096578360021461108f576002611099565b6001611099565b60005b60028111156110aa576110aa6112ba565b81526001602080830191909152600060409283018190526001600160a01b038086168252600483529290208351815493166001600160a01b0319841681178255918401519092909183916001600160a81b03191617600160a01b836002811115611116576111166112ba565b0217905550604082015181546060909301511515600160b01b0260ff60b01b19911515600160a81b029190911661ffff60a81b19909316929092179190911790555080611162816114a6565b915050610fa7565b6000805460ff60a01b1916600160a01b178155426007556040517f762f260439bb4be3ef6e4dc2786e2e7bd187d3d80b79057d7a424fe98563e3359190a160005b60025481101561127257600281815481106111c8576111c86114cd565b6000918252602082200154600280546001600160a01b03909216927f4ac36fa53f167ceb85964be512e01de2a3b8bdb9862f917da079deeeff689b38926004929086908110611219576112196114cd565b60009182526020808320909101546001600160a01b0316835282019290925260409081019091205490516112589160ff600160a01b9091041690611556565b60405180910390a28061126a816114a6565b9150506111ab565b506000805460ff60a01b1916600160a11b179055565b5080546000825590600052602060002090810190610aa991905b808211156112b657600081556001016112a2565b5090565b634e487b7160e01b600052602160045260246000fd5b60208101600683106112e4576112e46112ba565b91905290565b6000602082840312156112fc57600080fd5b5035919050565b60006020828403121561131557600080fd5b81356001600160a01b038116811461132c57600080fd5b9392505050565b6020808252825182820181905260009190848201906040850190845b818110156113745783516001600160a01b03168352928401929184019160010161134f565b50909695505050505050565b60038110611390576113906112ba565b9052565b6001600160a01b0385168152608081016113b16020830186611380565b921515604082015290151560609091015292915050565b602080825282518282018190526000919060409081850190868401855b8281101561143557815180516001600160a01b031685528681015161140c88870182611380565b5080860151151585870152606090810151151590850152608090930192908501906001016113e5565b5091979650505050505050565b6020808252601a908201527f4f6e6c792061637469766520706c6179657220616c6c6f776564000000000000604082015260600190565b602080825260139082015272496e76616c69642067616d652073746174652160681b604082015260600190565b6000600182016114c657634e487b7160e01b600052601160045260246000fd5b5060010190565b634e487b7160e01b600052603260045260246000fd5b6000602082840312156114f557600080fd5b5051919050565b6020808252825482820181905260008481528281209092916040850190845b818110156113745783546001600160a01b03168352600193840193928501920161151b565b634e487b7160e01b600052604160045260246000fd5b602081016115648284611380565b9291505056fea2646970667358221220f7d3c6e9fbc0e4b99b2ad2f91ec593ac5c8583649022d6c7a602e168fd5da89b64736f6c63430008140033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 204,
+        "contract": "contracts/MafiaGame.sol:MafiaGame",
+        "label": "treasury",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_contract(Treasury)1055"
+      },
+      {
+        "astId": 207,
+        "contract": "contracts/MafiaGame.sol:MafiaGame",
+        "label": "currentState",
+        "offset": 20,
+        "slot": "0",
+        "type": "t_enum(GameState)191"
+      },
+      {
+        "astId": 209,
+        "contract": "contracts/MafiaGame.sol:MafiaGame",
+        "label": "activePlayer",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_address"
+      },
+      {
+        "astId": 212,
+        "contract": "contracts/MafiaGame.sol:MafiaGame",
+        "label": "playerAddresses",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_array(t_address)dyn_storage"
+      },
+      {
+        "astId": 215,
+        "contract": "contracts/MafiaGame.sol:MafiaGame",
+        "label": "winners",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_array(t_address)dyn_storage"
+      },
+      {
+        "astId": 220,
+        "contract": "contracts/MafiaGame.sol:MafiaGame",
+        "label": "players",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_mapping(t_address,t_struct(Player)201_storage)"
+      },
+      {
+        "astId": 224,
+        "contract": "contracts/MafiaGame.sol:MafiaGame",
+        "label": "votes",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 226,
+        "contract": "contracts/MafiaGame.sol:MafiaGame",
+        "label": "totalVotes",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 228,
+        "contract": "contracts/MafiaGame.sol:MafiaGame",
+        "label": "startTime",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 230,
+        "contract": "contracts/MafiaGame.sol:MafiaGame",
+        "label": "lastKilled",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_address"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_array(t_address)dyn_storage": {
+        "base": "t_address",
+        "encoding": "dynamic_array",
+        "label": "address[]",
+        "numberOfBytes": "32"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_contract(Treasury)1055": {
+        "encoding": "inplace",
+        "label": "contract Treasury",
+        "numberOfBytes": "20"
+      },
+      "t_enum(GameState)191": {
+        "encoding": "inplace",
+        "label": "enum MafiaGame.GameState",
+        "numberOfBytes": "1"
+      },
+      "t_enum(Role)184": {
+        "encoding": "inplace",
+        "label": "enum MafiaGame.Role",
+        "numberOfBytes": "1"
+      },
+      "t_mapping(t_address,t_struct(Player)201_storage)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => struct MafiaGame.Player)",
+        "numberOfBytes": "32",
+        "value": "t_struct(Player)201_storage"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_struct(Player)201_storage": {
+        "encoding": "inplace",
+        "label": "struct MafiaGame.Player",
+        "members": [
+          {
+            "astId": 193,
+            "contract": "contracts/MafiaGame.sol:MafiaGame",
+            "label": "playerAddress",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address"
+          },
+          {
+            "astId": 196,
+            "contract": "contracts/MafiaGame.sol:MafiaGame",
+            "label": "role",
+            "offset": 20,
+            "slot": "0",
+            "type": "t_enum(Role)184"
+          },
+          {
+            "astId": 198,
+            "contract": "contracts/MafiaGame.sol:MafiaGame",
+            "label": "isAlive",
+            "offset": 21,
+            "slot": "0",
+            "type": "t_bool"
+          },
+          {
+            "astId": 200,
+            "contract": "contracts/MafiaGame.sol:MafiaGame",
+            "label": "hasVoted",
+            "offset": 22,
+            "slot": "0",
+            "type": "t_bool"
+          }
+        ],
+        "numberOfBytes": "32"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}

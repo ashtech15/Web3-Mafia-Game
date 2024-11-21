@@ -5,9 +5,9 @@
 import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 
 const deployedContracts = {
-  31337: {
+  80002: {
     MafiaGame: {
-      address: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+      address: "0xC10dE801304cD6dd8a38d1385fd9b684112086f4",
       abi: [
         {
           inputs: [
@@ -430,7 +430,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     Treasury: {
-      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      address: "0x5d733a6b4028DF07CD234aFb0924c0AE71663B5A",
       abi: [
         {
           inputs: [

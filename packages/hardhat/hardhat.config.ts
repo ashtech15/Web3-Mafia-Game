@@ -77,6 +77,10 @@ const config: HardhatUserConfig = {
       url: `https://polygon-rpc.com`,
       accounts: [deployerPrivateKey],
     },
+    polygonAmoy: {
+      url: `https://rpc-amoy.polygon.technology`,
+      accounts: [deployerPrivateKey],
+    },
     polygonMumbai: {
       url: `https://rpc.ankr.com/polygon_mumbai`,
       accounts: [deployerPrivateKey],
