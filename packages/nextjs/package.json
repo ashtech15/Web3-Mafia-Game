@@ -21,7 +21,7 @@
     "@uniswap/v2-sdk": "^4.6.1",
     "blo": "^1.0.1",
     "burner-connector": "^0.0.8",
-    "crypto-keccak": "^3.0.9",
+    "crypto-keccak": "^3.1.0",
     "daisyui": "4.12.10",
     "next": "^14.2.11",
     "next-nprogress-bar": "^2.3.13",
